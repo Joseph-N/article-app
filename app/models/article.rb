@@ -3,14 +3,21 @@ class Article < ActiveRecord::Base
   friendly_id :title, use: [:slugged, :history]
   
   
-  attr_accessible :article, :title, :photo
+  attr_accessible :article, :title, :photo, :category_id
   
-  validates :title, presence: true, length: { minimum: 5 }
-  validates :article, presence: true, length: { maximum: 500 } 
-  
+  belongs_to :category  
   has_attached_file :photo, :styles => { :small => "150x150>", :thumb => "100x100>" },
                     :url => "/assets/article_photos/:id/:style/:basename",
                     :path =>":rails_root/public/assets/article_photos/:id/:style/:basename"
+  
+  validates :category_id, presence: true
+  validates :title, presence: true, length: { minimum: 5 }
+  validates :article, presence: true, length: { maximum: 500 } 
+  
+  validates_attachment_size :photo, :less_than => 1.megabyte
+  validates_attachment_content_type :photo, :content_type => ['image/jpeg','image/png'],
+                                    :message => "Must be jpg or png"
+  
   
   #simple method to search for records
   def self.search(search)

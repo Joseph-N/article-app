@@ -1,0 +1,13 @@
+<% if @category.errors.any? %>
+  <p>The form contains <%= pluralize(@category.errors.count, "error") %></p>
+    <ul>
+  <% for error in @category.errors.full_messages %>
+    <li><%= error %></li>
+  <% end %>
+  </ul>
+<% end %>
+<%= form_for @category do |f| %>
+  <%= f.label :category %><br />
+  <%= f.text_field :name %><br />
+  <%= f.submit "Add Category" %>
+<% end %>

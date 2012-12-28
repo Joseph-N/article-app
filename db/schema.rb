@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121228082536) do
+ActiveRecord::Schema.define(:version => 20121228155039) do
 
   create_table "articles", :force => true do |t|
     t.string   "title"
@@ -23,9 +23,18 @@ ActiveRecord::Schema.define(:version => 20121228082536) do
     t.integer  "photo_file_size"
     t.datetime "photo_updated_at"
     t.string   "slug"
+    t.integer  "category_id"
   end
 
+  add_index "articles", ["category_id"], :name => "index_articles_on_cat_id"
+  add_index "articles", ["category_id"], :name => "index_articles_on_category_id"
   add_index "articles", ["slug"], :name => "index_articles_on_slug"
+
+  create_table "categories", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "friendly_id_slugs", :force => true do |t|
     t.string   "slug",                         :null => false

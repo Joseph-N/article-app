@@ -17,6 +17,9 @@
   	<%= f.text_field :title %>
   </p>
   <p>
+  	<%= f.label :category %><%= link_to "Add category", new_category_path %><br />
+  	<%= f.select(:category_id, options_from_collection_for_select(Category.all, :id, :name)) %>
+  <p>
   	<%= f.label :article %><br />
   	<%= f.text_area :article %>
   </p>

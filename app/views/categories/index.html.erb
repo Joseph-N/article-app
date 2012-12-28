@@ -1,0 +1,10 @@
+<h3>All Categories</h3>
+<%= flash[:success] %>
+<hr />
+<%= link_to "Add New Category", new_category_path %>
+<hr />
+<ul>
+<% for category in  @category %>
+   <li><%= category.name %></li>
+<% end %>
+</ul>

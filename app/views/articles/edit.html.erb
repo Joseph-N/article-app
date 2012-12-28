@@ -13,6 +13,9 @@
    <%= f.label :title %><br />
    <%= f.text_field :title %><br />
    
+    <%= f.label :category %><br /><%= link_to "Add category", new_category_path %><br />
+  	<%= f.select(:category_id, options_from_collection_for_select(Category.all, :id, :name)) %><br />
+   
    <%= f.label :article %><br />
    <%= f.text_area :article %><br />
    

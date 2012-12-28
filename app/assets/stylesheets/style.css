@@ -1,0 +1,16 @@
+body{
+	background-color: #666;
+	margin-top: 0px;
+	margin-bottom: 0px;
+}
+#content{
+	width: 80%;
+	margin:  0 auto;
+	background-color: #ffffff;
+	padding: 10px;
+}
+.clear{
+	clear:both;
+	border-bottom: solid thin #999;
+	padding: 5px;
+}

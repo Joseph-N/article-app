@@ -1,0 +1,25 @@
+<h1>How to - Tips and Tricks (<%= @article.count %> articles)</h1>
+<hr />
+<table>
+	<tr>
+		<td width="250">
+			<%= form_tag articles_path, :method => "get" do %>
+ 				<%= text_field_tag :search, params[:search] %>
+  				<%= submit_tag "Search", name: nil %>
+			<% end %>			
+		</td>
+		<td>
+			>> &nbsp;&nbsp;&nbsp; <%= link_to "New Article", new_article_path %>
+		</td>
+	</tr>
+</table>
+<hr />
+<% for article in @article %>
+  <h3><%= link_to article.title, article_path(article) %></h3>
+  <p>
+  	<%= image_tag article.photo.url(:thumb),:align => "left", :style => "padding-right: 10px;" %>
+  	Posted: <b><%= article.created_at %></b><br />
+  	<%= article.article %>
+  </p>
+ <div class="clear"></div>
+<% end %>

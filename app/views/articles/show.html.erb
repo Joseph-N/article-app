@@ -1,0 +1,7 @@
+<%= flash[:success] %>
+<hr />
+<%= link_to "All Articles", articles_path %> | <%= link_to "Edit Article", edit_article_path(@article) %> | 
+<%= link_to "Delete Article",{ action: :destroy, id: @article.id }, method: :delete, data: { confirm: 'Are you sure?' } %>
+<hr />
+<h2><%= @article.title %></h2>
+<p><%= image_tag @article.photo.url(:small) %><br /><%= @article.article %></p>
